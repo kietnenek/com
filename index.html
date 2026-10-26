@@ -1,286 +1,311 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kietaovios.com - Bio Link</title>
-    <!-- Chèn font chữ mượt giống trong ảnh -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Chèn thư viện icon FontAwesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Quicksand', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiet AOV iOS</title>
+  <meta name="description" content="Kiet AOV iOS - Designer & Game Projects">
 
-        body {
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 40px 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Tạo hiệu ứng các đốm sao mờ phía sau */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.05;
-            pointer-events: none;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #202238;
+      background:
+        radial-gradient(ellipse at 50% 25%, #ffffff 0%, #f7f8ff 55%, #fff7fc 100%);
+      min-height: 100vh;
+    }
 
-        /* Hiệu ứng ảnh đại diện vòng tròn đỏ phát sáng nhảy động */
-        .avatar-wrapper {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            margin-bottom: 20px;
-        }
+    header {
+      height: 60px;
+      padding: 0 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid #e9eaf3;
+    }
 
-        .avatar-wrapper::before {
-            content: "";
-            position: absolute;
-            top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff0055, #ff0000, #990000);
-            z-index: 1;
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
-            animation: rotateGlow 4s linear infinite;
-        }
+    .bell {
+      color: #6478ff;
+      font-size: 23px;
+    }
 
-        @keyframes rotateGlow {
-            100% { transform: rotate(360deg); }
-        }
+    .theme {
+      color: #ffad19;
+      font-size: 24px;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+    }
 
-        .avatar {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            border-radius: 50%;
-            border: 3px solid #020617;
-            object-fit: cover;
-            z-index: 2;
-        }
+    .profile {
+      text-align: center;
+      padding: 48px 16px 55px;
+    }
 
-        .info h2 {
-            font-size: 14px;
-            color: #94a3b8;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
+    .avatar {
+      width: 132px;
+      height: 132px;
+      object-fit: cover;
+      border-radius: 35%;
+      border: 4px solid white;
+      box-shadow: 0 8px 28px #25284a20;
+    }
 
-        /* Tên chính chữ nghiêng đậm có tích xanh kèm hiệu ứng đổi màu nhẹ */
-        .name-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
+    .hello {
+      margin-top: 18px;
+      color: #8190b0;
+      font-size: 14px;
+    }
 
-        .name {
-            font-size: 26px;
-            font-weight: 700;
-            font-style: italic;
-            background: linear-gradient(to right, #ffffff, #e2e8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    h1 {
+      margin-top: 8px;
+      font-size: 27px;
+      font-weight: 800;
+    }
 
-        .verified-badge {
-            color: #3b82f6;
-            font-size: 20px;
-        }
+    .verified {
+      color: #259bf0;
+      font-size: 21px;
+    }
 
-        .sub-title {
-            font-size: 15px;
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
+    .subtitle {
+      margin-top: 13px;
+      color: #8490b2;
+      font-size: 17px;
+    }
 
-        .sub-title span {
-            color: #818cf8;
-            font-weight: 700;
-        }
+    .subtitle span {
+      color: #6575ff;
+      font-weight: 700;
+    }
 
-        /* Hàng ngang 3 nút mạng xã hội */
-        .social-group {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 35px;
-        }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 25px;
+    }
 
-        .social-btn {
-            width: 55px;
-            height: 55px;
-            background: rgba(30, 41, 59, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            font-size: 22px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
+    .social {
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 21px;
+      box-shadow: 0 5px 20px #22254a16;
+      font-size: 25px;
+      text-decoration: none;
+      transition: .2s;
+    }
 
-        .social-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(51, 65, 85, 0.6);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
+    .social:hover {
+      transform: translateY(-5px);
+    }
 
-        /* Các khối danh sách nút dài bên dưới */
-        .links-group {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .discord { color: #5865f2; }
+    .telegram { color: #25a5e8; }
+    .youtube { color: #ff2424; }
 
-        .link-item {
-            width: 100%;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding: 0 20px 45px;
+      max-width: 1500px;
+      margin: auto;
+    }
 
-        .link-item:hover {
-            transform: scale(1.01);
-            background: rgba(30, 41, 59, 0.5);
-            border-color: rgba(255, 255, 255, 0.08);
-        }
+    .project {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 21px;
+      background: white;
+      box-shadow: 0 5px 24px #25284a15;
+      text-decoration: none;
+      color: #222;
+    }
 
-        .link-content {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-align: left;
-        }
+    .project img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform .35s;
+    }
 
-        /* Icon hình tròn bên trái của các nút danh sách */
-        .link-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-        }
+    .project:hover img {
+      transform: scale(1.04);
+    }
 
-        /* Màu riêng biệt cho từng loại nút icon */
-        .icon-green { background: #10b981; }
-        .icon-blue { background: #0ea5e9; }
+    .tag {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      background: rgba(255,255,255,.95);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
 
-        .text-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 2px;
-            color: #f8fafc;
-        }
+    .project-info {
+      padding: 16px;
+    }
 
-        .text-desc {
-            font-size: 12px;
-            color: #64748b;
-        }
+    .project-info h2 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
 
-        .arrow-icon {
-            color: #475569;
-            font-size: 14px;
-        }
-    </style>
+    .project-info p {
+      color: #7f8499;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #8b91a6;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        padding: 0 12px 30px;
+      }
+
+      .profile {
+        padding-top: 35px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .avatar {
+        width: 115px;
+        height: 115px;
+      }
+    }
+
+    body.dark {
+      color: #f4f5ff;
+      background: #111321;
+    }
+
+    body.dark header {
+      background: #191b2b;
+      border-color: #292c40;
+    }
+
+    body.dark .social,
+    body.dark .project {
+      background: #202337;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <div class="bell">♟</div>
+    <button class="theme" id="themeButton" aria-label="Đổi giao diện">☀</button>
+  </header>
 
-    <div class="container">
-        <!-- Ảnh đại diện viền phát sáng -->
-        <div class="avatar-wrapper">
-            <!-- Ảnh đại diện mặc định -->
-            <img src="https://ibb.co/3y7yJXpx" alt="Avatar" class="avatar">
+  <main>
+    <section class="profile">
+      <!-- Đổi URL bên dưới thành link ảnh đại diện của mày -->
+      <img
+        class="avatar"
+        src="https://placehold.co/300x300/22243a/ffffff?text=KIET"
+        alt="Ảnh đại diện Kiet AOV iOS"
+      >
+
+      <p class="hello">Hi, I am</p>
+
+      <h1>
+        Kiet AOV iOS
+        <span class="verified" title="Verified">✿</span>
+      </h1>
+
+      <p class="subtitle">and I'm a <span>Designer.</span></p>
+
+      <nav class="socials" aria-label="Mạng xã hội">
+        <!-- Thay # bằng link tài khoản của mày -->
+        <a class="social discord" href="#" aria-label="Discord">◉</a>
+        <a class="social telegram" href="#" aria-label="Telegram">➤</a>
+        <a class="social youtube" href="#" aria-label="YouTube">▶</a>
+      </nav>
+    </section>
+
+    <section class="projects" aria-label="Dự án của Kiet">
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/171b3d/ffffff?text=KIET+AOV+PROJECT+1"
+             alt="Dự án 1">
+        <div class="project-info">
+          <h2>Kiet AOV Menu</h2>
+          <p>Giao diện dự án Liên Quân Mobile.</p>
         </div>
+      </a>
 
-        <!-- Thông tin tên -->
-        <div class="info">
-            <h2>Hi, i am</h2>
-            <div class="name-wrapper">
-                <span class="name">Kietaovios.com</span>
-                <!-- Icon tích xanh chính chủ -->
-                <i class="fa-solid fa-circle-check verified-badge"></i>
-            </div>
-            <div class="sub-title">and I'm a <span>Mod</span></div>
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/24204c/ffffff?text=KIET+AOV+PROJECT+2"
+             alt="Dự án 2">
+        <div class="project-info">
+          <h2>AOV Design</h2>
+          <p>Thiết kế giao diện và hình ảnh.</p>
         </div>
+      </a>
 
-        <!-- Hàng ngang 3 nút mạng xã hội (Thay dấu # bằng link thật của bạn) -->
-        <div class="social-group">
-            <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="#" class="social-btn"><i class="fa-brands fa-telegram"></i></a>
-            <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/252033/ffffff?text=KIET+AOV+PROJECT+3"
+             alt="Dự án 3">
+        <div class="project-info">
+          <h2>My Projects</h2>
+          <p>Các dự án cá nhân của Kiet AOV iOS.</p>
         </div>
+      </a>
+    </section>
+  </main>
 
-        <!-- Danh sách nút tính năng bên dưới (Thay dấu # bằng link thật của bạn) -->
-        <div class="links-group">
-            
-            <!-- Nút 1: ủng hộ mình bằng vài lần vượt nhé
-        -->
-            <a href="#" class="link-item">
-                <div class="link-content">
-                    <div class="link-icon icon-green">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                    </div>
-                    <div>
-                        <div class="text-title">Shop Mua Key</div>
-                        <div class="text-desc">Mua key iOS + Android</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
+  <footer>
+    © 2026 Kiet AOV iOS. All rights reserved.
+  </footer>
 
-            <!-- Nút 2: Kênh discord -->
-            <a href="#" class="link-item">
-                <div class="link-content">
-                    <div class="link-icon icon-blue">
-                        <i class="fa-solid fa-paper-plane"></i>
-                    </div>
-                    <div>
-                        <div class="text-title">Kênh discord</div>
-                        <div class="text-desc">Nhận Thông Báo Update</div>
-                    </div>
-                </div>
-                <i class="fa-solid fa-arrow-right arrow-icon"></i>
-            </a>
+  <script>
+    const themeButton = document.getElementById('themeButton');
 
-        </div>
-    </div>
-
+    themeButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      themeButton.textContent =
+        document.body.classList.contains('dark') ? '☾' : '☀';
+    });
+  </script>
 </body>
 </html>
