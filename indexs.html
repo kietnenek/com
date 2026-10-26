@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiet AOV iOS</title>
+  <meta name="description" content="Kiet AOV iOS - Designer & Game Projects">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #202238;
+      background:
+        radial-gradient(ellipse at 50% 25%, #ffffff 0%, #f7f8ff 55%, #fff7fc 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      height: 60px;
+      padding: 0 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,.78);
+      border-bottom: 1px solid #e9eaf3;
+    }
+
+    .bell {
+      color: #6478ff;
+      font-size: 23px;
+    }
+
+    .theme {
+      color: #ffad19;
+      font-size: 24px;
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+    }
+
+    .profile {
+      text-align: center;
+      padding: 48px 16px 55px;
+    }
+
+    .avatar {
+      width: 132px;
+      height: 132px;
+      object-fit: cover;
+      border-radius: 35%;
+      border: 4px solid white;
+      box-shadow: 0 8px 28px #25284a20;
+    }
+
+    .hello {
+      margin-top: 18px;
+      color: #8190b0;
+      font-size: 14px;
+    }
+
+    h1 {
+      margin-top: 8px;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .verified {
+      color: #259bf0;
+      font-size: 21px;
+    }
+
+    .subtitle {
+      margin-top: 13px;
+      color: #8490b2;
+      font-size: 17px;
+    }
+
+    .subtitle span {
+      color: #6575ff;
+      font-weight: 700;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .social {
+      width: 65px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 21px;
+      box-shadow: 0 5px 20px #22254a16;
+      font-size: 25px;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .social:hover {
+      transform: translateY(-5px);
+    }
+
+    .discord { color: #5865f2; }
+    .telegram { color: #25a5e8; }
+    .youtube { color: #ff2424; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding: 0 20px 45px;
+      max-width: 1500px;
+      margin: auto;
+    }
+
+    .project {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 21px;
+      background: white;
+      box-shadow: 0 5px 24px #25284a15;
+      text-decoration: none;
+      color: #222;
+    }
+
+    .project img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform .35s;
+    }
+
+    .project:hover img {
+      transform: scale(1.04);
+    }
+
+    .tag {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      background: rgba(255,255,255,.95);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .project-info {
+      padding: 16px;
+    }
+
+    .project-info h2 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .project-info p {
+      color: #7f8499;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: #8b91a6;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        padding: 0 12px 30px;
+      }
+
+      .profile {
+        padding-top: 35px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .avatar {
+        width: 115px;
+        height: 115px;
+      }
+    }
+
+    body.dark {
+      color: #f4f5ff;
+      background: #111321;
+    }
+
+    body.dark header {
+      background: #191b2b;
+      border-color: #292c40;
+    }
+
+    body.dark .social,
+    body.dark .project {
+      background: #202337;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="bell">♟</div>
+    <button class="theme" id="themeButton" aria-label="Đổi giao diện">☀</button>
+  </header>
+
+  <main>
+    <section class="profile">
+      <!-- Đổi URL bên dưới thành link ảnh đại diện của mày -->
+      <img
+        class="avatar"
+        src="https://placehold.co/300x300/22243a/ffffff?text=KIET"
+        alt="Ảnh đại diện Kiet AOV iOS"
+      >
+
+      <p class="hello">Hi, I am</p>
+
+      <h1>
+        Kiet AOV iOS
+        <span class="verified" title="Verified">✿</span>
+      </h1>
+
+      <p class="subtitle">and I'm a <span>Designer.</span></p>
+
+      <nav class="socials" aria-label="Mạng xã hội">
+        <!-- Thay # bằng link tài khoản của mày -->
+        <a class="social discord" href="#" aria-label="Discord">◉</a>
+        <a class="social telegram" href="#" aria-label="Telegram">➤</a>
+        <a class="social youtube" href="#" aria-label="YouTube">▶</a>
+      </nav>
+    </section>
+
+    <section class="projects" aria-label="Dự án của Kiet">
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/171b3d/ffffff?text=KIET+AOV+PROJECT+1"
+             alt="Dự án 1">
+        <div class="project-info">
+          <h2>Kiet AOV Menu</h2>
+          <p>Giao diện dự án Liên Quân Mobile.</p>
+        </div>
+      </a>
+
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/24204c/ffffff?text=KIET+AOV+PROJECT+2"
+             alt="Dự án 2">
+        <div class="project-info">
+          <h2>AOV Design</h2>
+          <p>Thiết kế giao diện và hình ảnh.</p>
+        </div>
+      </a>
+
+      <a class="project" href="#">
+        <span class="tag"> iOS</span>
+        <img src="https://placehold.co/800x450/252033/ffffff?text=KIET+AOV+PROJECT+3"
+             alt="Dự án 3">
+        <div class="project-info">
+          <h2>My Projects</h2>
+          <p>Các dự án cá nhân của Kiet AOV iOS.</p>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Kiet AOV iOS. All rights reserved.
+  </footer>
+
+  <script>
+    const themeButton = document.getElementById('themeButton');
+
+    themeButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      themeButton.textContent =
+        document.body.classList.contains('dark') ? '☾' : '☀';
+    });
+  </script>
+</body>
+</html>
